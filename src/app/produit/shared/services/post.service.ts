@@ -13,10 +13,17 @@ export class PostService {
   constructor(private http:HttpClient) { }
 
   all():Observable<Post[]> {
+    
     return this.http.get<Post[]>(this.url)
   }
-
+  
   post$ = (id:number) => {
     return this.http.get<Post>(`${this.url}/${id}`)
   }
+  /* findProduit(id:number):Post{
+    const prod =this.all().filter((produit:Post)=>{
+      return produit.id == id
+    })
+    return prod;
+  } */
 }

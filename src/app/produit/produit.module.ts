@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BlogRoutingModule } from './blog-routing.module';
+import { BlogRoutingModule } from './produit-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { AsideComponent } from './components/aside/aside.component';
@@ -28,4 +28,4 @@ import { CommandesComponent } from './pages/commandes/commandes.component';
     RouterModule,
   ]
 })
-export class BlogModule { }
+export class ProduitModule { }

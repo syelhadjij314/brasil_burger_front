@@ -2,7 +2,7 @@
     "posts": [
         { 
             "id": 1,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/f/82/f82df753-36c8-438b-983f-70efc739d29e_?twic=v1/contain=700x350",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 1 Post!",
@@ -10,7 +10,7 @@
         },
         { 
             "id": 2,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/d/dd/ddd0527a-3395-4744-aca7-2a6525fd637f_?twic=v1/contain=250x250",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 2 Post!",
@@ -18,7 +18,7 @@
         },
         { 
             "id": 3,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/e/48/e487a65f-d61e-4995-b70d-b90d2e36d383_?twic=v1/contain=250x250",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 3 Post!",
@@ -26,7 +26,7 @@
         },
         { 
             "id": 4,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/0/08/0088bdde-9eba-40aa-abc7-1fcb55288f89_?twic=v1/contain=250x250",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 4 Post!",
@@ -34,7 +34,7 @@
         },
         { 
             "id": 5,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/b/38/b38595ce-dfd5-4e28-bffc-2607cadd0ca8_?twic=v1/contain=250x250",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 5 Post!",
@@ -42,7 +42,7 @@
         },
         { 
             "id": 6,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/d/68/d688560e-85c3-4162-bda7-4e3d1c475a1b_?twic=v1/contain=250x250",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 6 Post!",
@@ -50,7 +50,7 @@
         },
         { 
             "id": 7,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/0/08/0088bdde-9eba-40aa-abc7-1fcb55288f89_?twic=v1/contain=250x250",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 7 Post!",
@@ -58,7 +58,7 @@
         },
         { 
             "id": 8,
-            "image":"https://dummyimage.com/700x350/dee2e6/6c757d.jpg",
+            "image":"https://burgerkingfrance.twic.pics/img/products/4/56/4565c2c0-baec-48d9-8493-db196b9b3250_?twic=v1/contain=250x250",
             "date": "January 1, 2022",
             "categories": ["bongo","kony","lien"],
             "titre": "Welcome to Blog 8 Post!",

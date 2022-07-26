@@ -14,6 +14,7 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     this.posts$ = this.serv.all();
+    
   }
 
 }
