@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../../shared/models/post';
+import { Router } from '@angular/router';
+import { Produit } from 'src/app/shared/models/produit';
 
 @Component({
   selector: 'blog-card',
@@ -7,10 +8,15 @@ import { Post } from '../../shared/models/post';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  @Input('posts') post : Post|null = null;
+  @Input('produits') prod! : Produit;
+  
 
-  constructor() { }
+  constructor(private route : Router) { }
   ngOnInit(): void {
+    
+  }
+  RecupObject(){
+    return this.route.navigateByUrl(`/produit/detail/${this.prod.id}`)
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from '../../shared/models/post';
-import { PostService } from '../../shared/services/post.service';
+import { Catalogue } from 'src/app/shared/models/catalogue';
+import { Produit } from 'src/app/shared/models/produit';
+import { CatalogueService } from 'src/app/shared/services/catalogue.service';
+import { ProduitService } from '../../../shared/services/produit.service';
 
 @Component({
   selector: 'blog-home',
@@ -11,12 +13,16 @@ import { PostService } from '../../shared/services/post.service';
 
 export class HomeComponent implements OnInit {
 
-  posts$ : Observable<Post[]> | null = null;
-  constructor(private serv:PostService) { }
+  produits$ : Observable <Catalogue>|null = null;
+  produits:Catalogue|null=null;
+  constructor(private catalogueServ:CatalogueService) { }
 
   ngOnInit(): void {
-    this.posts$ = this.serv.all();
-
+    this.catalogueServ.getCatalogue().subscribe((data) => this.produits = data)
+    this.produits$ = this.catalogueServ.getCatalogue();
+    
   }
-
+  showBurgers(){
+    
+  }
 }
