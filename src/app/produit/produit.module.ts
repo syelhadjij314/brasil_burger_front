@@ -10,6 +10,7 @@ import { LayoutModule } from '../layout/layout.module';
 import { RouterModule } from '@angular/router';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { CommandesComponent } from './pages/commandes/commandes.component';
+import { ComplementComponent } from './components/complement/complement.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CommandesComponent } from './pages/commandes/commandes.component';
     CardComponent,
     CatalogueComponent,
     CommandesComponent,
+    ComplementComponent,
   ],
   imports: [
     CommonModule,

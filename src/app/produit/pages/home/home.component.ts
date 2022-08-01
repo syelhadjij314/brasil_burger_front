@@ -15,14 +15,15 @@ export class HomeComponent implements OnInit {
 
   produits$ : Observable <Catalogue>|null = null;
   produits:Catalogue|null=null;
+  values = [
+    { id: 3432, name: "Recent" },
+    { id: 3442, name: "Most Popular" },
+  ];
   constructor(private catalogueServ:CatalogueService) { }
 
   ngOnInit(): void {
     this.catalogueServ.getCatalogue().subscribe((data) => this.produits = data)
     this.produits$ = this.catalogueServ.getCatalogue();
-    
-  }
-  showBurgers(){
     
   }
 }

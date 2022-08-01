@@ -7,38 +7,45 @@
                 <!-- Post header-->
                 <header class="mb-4">
                     <!-- Post title-->
-                    <h1 class="fw-bolder mb-1">{{ prod.nom }}</h1>
+                    <h2 class="fw-bolder mb-1">{{ prod.nom }}</h2>
+                    <h2 class="fw-bolder mb-1 text-muted fst-italic mb-2">{{ prod.prix }} Frs</h2>
+
                     <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">{{ prod.prix }}</div>
+                    <div class="text-muted fst-italic mb-2">
+                        <div class="" *ngIf="detail?.menu">
+                            <h3>Composition du Menu</h3>
+                            <div class="" *ngFor="">
+
+                            </div>
+                            <p></p>
+                            <p></p>
+
+
+                        </div>
+                    </div>
                     <!-- Post categories-->
-                    
+
                 </header>
                 <!-- Preview image figure-->
                 <!-- Post content-->
                 
             </article>
             <!-- Comments section-->
-            <div class="card-footer border-top-0 bg-transparent">
-                <a class="btn btn-outline-dark mt-auto" href="#">Portion Frite</a>
-                <a class="btn btn-outline-dark mt-auto" href="#">Boisson</a>
-            </div>
-                <!--<div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5" *ngFor="let prod of produits?.produit">
-                        <blog-card [produits]="prod"></blog-card>
-                    </div>
-                </div>
-                </div>-->
-            
+        
         </div>
         <div class="col-lg-8">
-            <figure class="mb-4"><img class="img-fluid rounded" src="data:image/png;base64,{{ prod.image }}" alt="" /></figure>
-
+            <figure class="mb-4"><img class="img-fluid rounded w-50" src="data:image/png;base64,{{ prod.image }}" alt="bonjour" /></figure>
         </div>
+        <div class="card-footer border-top-0 bg-transparent">
+            <a class="btn btn-outline-dark mt-auto" href="#">Boisson</a>
+            <a class="btn btn-outline-dark mt-auto" href="#">Portion Frite</a>
+        </div>
+        <!--<blog-catalogue></blog-catalogue>-->
         <!-- Side widgets-->
-        <!-- <div class="col-lg-4">
-            <blog-aside></blog-aside>
-        </div> -->  
         
     </div>
+    <div class="row d-flex flex_wrap" *ngFor="let prod of detail?.frites">
+            <img src="data:image/png;base64,{{ prod.image}}" alt="bbd" srcset="">
+        <!-- <blog-complement></blog-complement>-->
+    </div> 
 </div>
