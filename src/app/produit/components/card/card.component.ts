@@ -9,8 +9,6 @@ import { Produit } from 'src/app/shared/models/produit';
 })
 export class CardComponent implements OnInit {
   @Input('produits') prod! : Produit;
-  
-
   constructor(private route : Router) { }
   ngOnInit(): void {
     

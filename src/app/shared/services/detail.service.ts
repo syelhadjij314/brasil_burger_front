@@ -10,22 +10,10 @@ export class DetailService {
   private apiDetail="http://localhost:8000/api/details"
 
   constructor(private http:HttpClient) { }
-  getDetail():Observable<Detail> {
-    return this.http.get<Detail>(this.apiDetail).pipe(
-    /*  map(        
-        data => {          
-          data.produit  = [...data["hydra:member"][0].menus,
-          ...data["hydra:member"][1].burgers]
-          data.burgers=data["hydra:member"][1].burgers
-          data.menus=data["hydra:member"][0].menus
-          // console.log(data.produit);
-          return data
-        }
-      ), */
-      // tap(data => console.log(data.menu))
-    )    
-  }
+  /* getDetail():Observable<any> {
+    return this.http.get<any>(this.apiDetail)
+  } */
   getIdProduit$ = (id:number) => {
-    return this.http.get<Detail>(`${this.apiDetail}/${id}`)
+    return this.http.get<any>(`${this.apiDetail}/${id}`)
   }
 }
