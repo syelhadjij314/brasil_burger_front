@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Catalogue } from 'src/app/shared/models/catalogue';
 import { Produit } from 'src/app/shared/models/produit';
 import { CatalogueService } from 'src/app/shared/services/catalogue.service';
@@ -17,7 +16,7 @@ export class CatalogueComponent implements OnInit {
   ngOnInit(): void {
     this.catalogueServ.getCatalogue().subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.produits = data;
         this.produit = this.produits.produit
       }

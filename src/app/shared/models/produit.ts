@@ -2,7 +2,7 @@ import { Boisson } from "./boisson";
 import { Menu } from "./menu";
 
 export interface Produit {
-    id?:number,
+    id:number,
     nom:string,
     prix:number,
     image?:Blob,
@@ -10,6 +10,7 @@ export interface Produit {
     boissons:[]
     burgers:[],
     frites?:[],
+    qnt:number
     
 }
 

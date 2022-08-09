@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { CommandesComponent } from './pages/commandes/commandes.component';
 import { ComplementComponent } from './components/complement/complement.component';
+import { InputComponent } from './components/input/input.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,12 +24,15 @@ import { ComplementComponent } from './components/complement/complement.componen
     CatalogueComponent,
     CommandesComponent,
     ComplementComponent,
+    InputComponent,
   ],
   imports: [
     CommonModule,
     BlogRoutingModule,
     LayoutModule,
     RouterModule,
+    FormsModule,
+    
   ]
 })
 export class ProduitModule { }
