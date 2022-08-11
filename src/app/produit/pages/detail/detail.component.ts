@@ -11,11 +11,7 @@ import { PanierService } from 'src/app/shared/services/panier.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  detail! : any | null;  
-  @Input('') prod! : Produit;
-  // object$!:Observable<Produit[]>
-  // @Input('produits') prodm! : Produit;
-
+  @Input('') detail! : any | null;  
   object$! : Observable<Produit[]>;
   
   constructor(private detailServ:DetailService,private route : ActivatedRoute,private panierServ :PanierService) { }

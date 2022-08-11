@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<ng-container class="" *ngFor="let b of detail.produit.boissons let index = index">
-    <div class="content-img form-check d-flex">
-        
+
+<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+    <button
+        class="btn btn-link px-2"
+        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+    >
+        <i class="fas fa-minus"></i>
+    </button>
+    <input
+        id="checkedQuantity"
+        min="1"
+        name="quantity"
+        value="1"
+        max=""
+        type="number"
+        class="form-control form-control-sm w-auto"
+    />
+    <button
+        class="btn btn-link px-2"
+        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"        
+    >
+        <i class="fas fa-plus"></i>
+    </button>
+</div>   
+<div class="content-section mt-4" *ngFor="let b of detail let index = index">
+    <div class="taille-quantite">
+        <p>Taille:{{ b.taille.libelle }}</p>
+        <p>Quantite:{{ b.quantite }}</p>
+        <p>Prix:{{ b.taille.prix }}</p>
+    </div>
+    <div class="content-img form-check d-flex">        
         <div class="m-4" *ngFor="let img of b.taille.boissonTailles">
             <input
             class="form-check-input"
             type="checkbox"
             [value]="false"
             id="flexCheckDefault"
-            (change)="inputChecked($event)"
+            (change)="inputValue(img)"
             />
             <label class="form-check-label m-4" for="flexCheckDefault">
             <img
@@ -24,27 +52,24 @@
                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                     >
                         <i class="fas fa-minus"></i>
-                    </button>
-            
+                    </button>    
                     <input
                         id="checkedQuantity"
                         min="0"
                         name="quantity"
                         value="0"
-                        max="{{b.quantite}}"
+                        max=""
                         type="number"
                         class="form-control form-control-sm w-auto"
-                    />
-            
+                    />            
                     <button
                         class="btn btn-link px-2"
                         (click)="plus(index)"
-                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                        
+                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"                        
                     >
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>   
         </div>
     </div>
-</ng-container>
+</div>

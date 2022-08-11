@@ -15,7 +15,7 @@ export class CardPanierComponent implements OnInit {
 
   object$ = this.panierServ.object$
   ngOnInit(): void {
-    console.log(this.object$);
+    // console.log(this.object$);
 
   }
   

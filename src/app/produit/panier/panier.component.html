@@ -19,22 +19,21 @@
                                     class="fas fa-angle-down mt-1"></i></a></p>
                             </div>
                         </div>
-                        <div class="card rounded-3 mb-4" *ngFor="let prod of object$ | async">
-                        
+                        <div class="card rounded-3 mb-4" *ngFor="let prod of object$ | async">                        
                             <blog-card-panier [produits]="prod"></blog-card-panier>
                         </div>
                 
-                        <div class="card mb-4">
-                            <div class="card-body p-4 d-flex flex-row">
-                                <div class="form-outline flex-fill">
-                                    
-                                </div>
+                        <div class="card mb-4" *ngFor="let mesZones of zone$|async">
+                            <div class="card-body p-4" >
+                                <!--<h2>LIVRAISON OU EMPORTER</h2>-->
+                                <label for="">{{mesZones.nom}}</label>
+                                <input type="radio" value="">  
                             </div>
                         </div>
                 
                         <div class="card">
                             <div class="card-body">
-                            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                            <button type="button" class="btn btn-warning btn-block btn-lg col-12" routerLink="/login">Commander</button>
                             </div>
                         </div>
                 
@@ -43,9 +42,9 @@
                     </div>
                 </section>
         </div>
-        <div class="modal-footer">
+        <!--<div class="modal-footer">
         <button type="button" class="btn btn-primary">Understood</button>
-        </div>
+        </div>-->
     </div>
     </div>
 </div>

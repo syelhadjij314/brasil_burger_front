@@ -35,6 +35,9 @@ p {
     font-size: 14px;
     line-height: 1.7;
 }
+input.ng-valid.ng-touched{
+    border:solid 2px red;
+}
 
 h4 {
     font-weight: 600;

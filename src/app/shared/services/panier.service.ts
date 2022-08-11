@@ -42,4 +42,9 @@ export class PanierService {
       }),
     ).subscribe();
   }
+
+  choiceZone(option:string){
+    option == "livraison" ? alert("a livrer") :
+    alert("a emporter")
+  }
 }

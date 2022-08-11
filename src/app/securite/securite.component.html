@@ -16,32 +16,49 @@
                 <div class="center-wrap">
                   <div class="section text-center">
                     <h4 class="mb-4 pb-3">Log In</h4>
-                    <div class="form-group">
-                      <input
-                        type="email"
-                        name="logemail"
-                        class="form-style"
-                        placeholder="Your Email"
-                        id="logemail"
-                        autocomplete="off"
-                      />
-                      <i class="input-icon uil uil-at"></i>
-                    </div>
-                    <div class="form-group mt-2">
-                      <input
-                        type="password"
-                        name="logpass"
-                        class="form-style"
-                        placeholder="Your Password"
-                        id="logpass"
-                        autocomplete="off"
-                      />
-                      <i class="input-icon uil uil-lock-alt"></i>
-                    </div>
-                    <a href="#" class="btn mt-4">submit</a>
-                    <p class="mb-0 mt-4 text-center">
-                      <a href="#0" class="link">Forgot your password?</a>
-                    </p>
+                    <form #signIn="ngForm" (ngSubmit)="findLogin(user)">
+                      <div class="form-group">
+                        <input
+                          type="email" 
+                          id="username"
+                          name="username" required
+                          class="form-style"
+                          placeholder="Your Email"
+                          autocomplete="off"
+                          [(ngModel)]="user.username"
+                          #username="ngModel"                          
+                        />
+                        <!--<i class="input-icon uil uil-at"></i>-->
+                      </div>
+                      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger"> 
+                        <div *ngIf="username.errors?.['required']">
+                          Username is required.
+                        </div>
+                      </div>
+
+                      <div class="form-group mt-2">
+                        <input
+                          type="password"
+                          name="logpassword" required
+                          class="form-style"
+                          placeholder="Your Password"
+                          id="logpassword"
+                          autocomplete="off"
+                          [(ngModel)]="user.password"
+                          #password="ngModel"
+                        />
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger"> 
+                        <div *ngIf="password.errors?.['required']">
+                          Password is required.
+                        </div>
+                      </div>
+                      <input type="submit" class="btn mt-4" value="submit" [disabled]="signIn.invalid">
+                      <p class="mb-0 mt-4 text-center">
+                        <!--<a href="#0" class="link">Forgot your password?</a>-->
+                      </p>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -66,7 +83,7 @@
                         name="logemail"
                         class="form-style"
                         placeholder="Your Email"
-                        id="logemail"
+                        id="logemail1"
                         autocomplete="off"
                       />
                       <i class="input-icon uil uil-at"></i>
