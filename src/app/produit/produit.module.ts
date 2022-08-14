@@ -13,8 +13,7 @@ import { CommandesComponent } from './pages/commandes/commandes.component';
 import { ComplementComponent } from './components/complement/complement.component';
 import { InputComponent } from './components/input/input.component';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptorService } from '../shared/services/token-interceptor.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -33,7 +32,8 @@ import { TokenInterceptorService } from '../shared/services/token-interceptor.se
     BlogRoutingModule,
     LayoutModule,
     RouterModule,
-    FormsModule, 
+    FormsModule,
+    Ng2SearchPipeModule 
   ],
 })
 export class ProduitModule { }

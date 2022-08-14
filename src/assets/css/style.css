@@ -6918,6 +6918,9 @@ fieldset:disabled .btn {
       display: flex;
       /* justify-content: space-evenly; */
 }
+.menu-right{
+      margin-left:-5rem;
+}
 
 .taille-quantite {
       display: flex;

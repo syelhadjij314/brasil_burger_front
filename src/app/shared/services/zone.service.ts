@@ -8,7 +8,8 @@ import { map, Observable } from 'rxjs';
 export class ZoneService {
 
   constructor( private http:HttpClient) { }
-  private urlZone="http://localhost:8000/api/zones";
+ 
+  urlZone="http://localhost:8000/api/zones";
 
   getZone():Observable<any>{
     return this.http.get<any>(this.urlZone).pipe(

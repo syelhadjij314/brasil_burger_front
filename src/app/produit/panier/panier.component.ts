@@ -10,34 +10,58 @@ import { ZoneService } from 'src/app/shared/services/zone.service';
   styleUrls: ['./panier.component.css']
 })
 export class PanierComponent implements OnInit {
-  
   // produit! : Produit|undefined|null;
   @Input('produits') prod!:Produit|null|undefined;
   @Input() mesZones!: Zone| null|undefined ;
   option!:string;
-  zone$!: any;
-  constructor(private panierServ : PanierService, private zoneServ: ZoneService) { }
+  zone$:any []=[];
+  showZone:string ="d-none";
+  prixCommande:number=this.calculatePriceTotalCommande();
+  constructor(private panierServ : PanierService
+    , private zoneServ: ZoneService) { }
 
   object$ = this.panierServ.object$
   ngOnInit(): void {
     this.zoneServ.getZone().subscribe(
       data => {
-        this.zone$=data;
-        
-        console.log(this.zone$);        
+        this.zone$=data;   
       }
     )
-    // this.panierServ.choiceZone(this.option);
-    // console.log(this.object$);
-    
   }
+    
   supprimerProduitAuPanier(prod:Produit) {
     this.panierServ.ajouterAuPanier(prod,"off");
   }
 
-  choiceZone(option:string){
-    option == "livraison" ? this.zone$ :
-    alert("a emporter")
+  showZones(){
+    this.showZone="d-block"
   }
+  calculatePrice(produit:Produit,qnt:any){
+    this.panierServ.recupValueQuantity(produit,qnt)
+  }
+  calculatePriceTotalCommande(){
+    return this.prixCommande=this.panierServ.calculatePriceCommande()
+  }
+  /* CommandeOperation(){
+    let commandes=this.panierServ.getPanier();
+    const produits: Produit[]=[];
+    commandes.forEach((produit:Produit)=>{
+      produits.push({
+        qnt: produit.qnt
+        produit: produit.id
+      })
+    })
+    this.object$.pipe(
+      map((produits:any) =>{
+        produits.forEach((produit:any) =>{
+          this.tabCommande.push({
+            'prod':produit,
+            'quantite':produit.qnt
+          })
+        })
+      })
+    )
+    return this.tabCommande;
+  }     */
 
 }

@@ -10,7 +10,8 @@ export interface Produit {
     boissons:[]
     burgers:[],
     frites?:[],
-    qnt:number
-    
+    qnt:number,
+    produit: number
+    produits:Produit[],
 }
 

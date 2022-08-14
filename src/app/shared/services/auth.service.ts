@@ -1,15 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   private urlLogin= "http://localhost:8000/api/login_check";
 
   headers: HttpHeaders;
-  constructor(private http : HttpClient) {
+  constructor(private http : HttpClient, private route:Router) {
     const token = localStorage.getItem('token');
     this.headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
   }
@@ -17,9 +20,13 @@ export class AuthService {
   findLogin(user: User){
     return this.http.post(this.urlLogin, user)
   }
-  isLoogedIn(){
-    
+  isLoogedIn(){    
     return localStorage.getItem('token') != null
+  }
+  isLoogedOut(){
+    
+    localStorage.removeItem('token')
+    this.route.navigate(['/']);
   }
 
   getToken(){
@@ -38,4 +45,5 @@ export class AuthService {
     alert("Access Denied")
     return false;
   }
+  
 }

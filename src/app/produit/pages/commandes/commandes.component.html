@@ -1,3 +1,30 @@
+<!DOCTYPE html>
 <blog-header></blog-header>
-<p>commandes works!</p>
+<div class="container">
+    <div class="search-name">
+        <input type="text" class="form-control mt-3" name="search" [(ngModel)]="searchText" autocomplete="on" aria-label="Text input with segmented">
+    </div>
+    <h2 class="text-center mt-2">LISTES DES COMMANDES</h2>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Numero Commande</th>
+                <th>Date Commande</th>
+                <th>Etat</th>
+                <th>Zone</th>
+                <th>Montant</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let com of mesCommandes.commandes | filter:searchText">
+                <td scope="row">{{com.numeroCommande}}</td>
+                <td>{{com.numeroCommande}}</td>
+                <td>{{com.dateAt | date:"dd/m/y"}}</td>
+                <td>{{com.zone.nom}}</td>
+                <td>{{com.montant}}</td>
+            </tr>
+            
+        </tbody>
+    </table>    
+</div>
 <blog-footer></blog-footer>
