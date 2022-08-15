@@ -12,6 +12,8 @@ export class AuthService {
   private urlLogin= "http://localhost:8000/api/login_check";
 
   headers: HttpHeaders;
+  idUser!:number;
+
   constructor(private http : HttpClient, private route:Router) {
     const token = localStorage.getItem('token');
     this.headers = new HttpHeaders().set('Authorization', 'Bearer' + token);
@@ -44,6 +46,18 @@ export class AuthService {
     // console.log(finalData);
     alert("Access Denied")
     return false;
+  }
+  getIdUser(user:User):number{
+    this.http.post(this.urlLogin, user).subscribe(
+      (userConnect:any)=>{
+        if (userConnect['token']) {        
+          // console.log(userConnect['id'])
+          localStorage.setItem('token',userConnect['token']);          
+        }
+        this.idUser=userConnect['id']
+      }
+    )
+    return this.idUser
   }
   
 }

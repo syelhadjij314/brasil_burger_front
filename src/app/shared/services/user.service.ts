@@ -29,7 +29,7 @@ export class UserService {
     addUser(p: User) {
     return this.http.post(this.urlUser, p, { headers: this.headers });
     }
-    getCommandesClient(client_id:number){
+    getCommandesClient(client_id:any){
       return this.http.get(this.urlUser+"/"+client_id)
     }
     getUserByEmail(emailUser:string){
@@ -41,7 +41,7 @@ export class UserService {
             }
         }); 
       })
-      console.log(this.usercom.id);
+      // console.log(this.usercom.id);
         return this.usercom.id;
       
     }

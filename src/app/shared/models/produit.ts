@@ -11,7 +11,6 @@ export interface Produit {
     burgers:[],
     frites?:[],
     qnt:number,
-    produit: number
-    produits:Produit[],
+    produits:[],
 }
 

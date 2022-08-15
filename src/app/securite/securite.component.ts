@@ -10,10 +10,6 @@ import { CommandeService } from '../shared/services/commande.service';
   styleUrls: ['./securite.component.css']
 })
 export class SecuriteComponent implements OnInit {
-  /* messageClass=''
-  message=''
-  costumerid: any;
-  editdata: any; */
   responsedata: any;
 
   constructor(private authServ: AuthService,
@@ -24,34 +20,16 @@ export class SecuriteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-// findLogin(user:User){
-//   if (user) {
-//     this.authServ.findLogin(this.user).subscribe(result => {      
-//       if (result != null) {
-//         this.responsedata= result;
-//         localStorage.setItem("token",JSON.stringify(result))
-//         console.log(user);
-        
-//        // localStorage.setItem('token',this.responsedata.jwtToken);
-//         this.route.navigate(['/produit/commandes'])
-//         }else{
-//           this.route.navigate(['/login'])
-//         }
-//       })
-//     }
-//   }
+
   findLogin() {
     this.authServ.findLogin(this.user).subscribe((res:any) => {
-      if (res['token']) {
-        /* res['token'].push({
-          "id":res.id
-        }) */
+      if (res['token']) {        
+        localStorage.setItem('id',res['id'])
+        localStorage.setItem('token',res['token']);
+        this.commandServ.getDecodedAccessToken(res['token']);
+        console.log(this.commandServ.getDecodedAccessToken(res['token']));
         
-        localStorage.setItem('token', res['token']);
-        let tokenDecode=this.commandServ.getDecodedAccessToken(res['token']);
-        console.log(tokenDecode)
-        this.route.navigateByUrl('/produit/commandes');
-        
+        this.route.navigateByUrl('/produit/commandes');        
       }
       else {
         this.route.navigate(['/login']);

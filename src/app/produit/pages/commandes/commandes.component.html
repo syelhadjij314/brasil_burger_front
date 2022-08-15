@@ -5,7 +5,7 @@
         <input type="text" class="form-control mt-3" name="search" [(ngModel)]="searchText" autocomplete="on" aria-label="Text input with segmented">
     </div>
     <h2 class="text-center mt-2">LISTES DES COMMANDES</h2>
-    <table class="table table-striped mt-3">
+    <table class="table mt-3">
         <thead>
             <tr>
                 <th>Numero Commande</th>
@@ -13,17 +13,48 @@
                 <th>Etat</th>
                 <th>Zone</th>
                 <th>Montant</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let com of mesCommandes.commandes | filter:searchText">
+            <ng-container *ngIf="tokenDecode.roles[1]=='ROLE_CLIENT'">
+                <tr *ngFor="let com of mesCommandes.commandes | filter:searchText">
+                    <td scope="row">{{com.numeroCommande}}</td>
+                    <td>{{com.dateAt | date:"dd/m/y"}}</td>
+                    <td>{{com.etat}}</td>
+                    <td>{{com.zone.nom}}</td>
+                    <td>{{com.montant}}Frs</td>
+                    <td class="d-flex">
+                        <button class="btn btn-outline-dark d-flex" type="button" routerLink="">
+                            <i class="fas fa-trash fa-lg mt-2 text-danger"></i>
+                            <span class="m-1 mt-0 mb-0">Annuler</span> 
+                        </button>
+                        <button class="btn btn-outline-dark d-flex justify-content-between" type="button" routerLink="">
+                            <i class="fa-solid fa-lg fa-pen-to-square mt-2 text-info"></i>
+                            
+                            <span class="m-1 mt-0 mb-0">Modifier</span>
+                        </button>
+                    </td>
+                </tr>
+            </ng-container>
+            <tr *ngFor="let com of mesCommandes | filter:searchText">
                 <td scope="row">{{com.numeroCommande}}</td>
-                <td>{{com.numeroCommande}}</td>
                 <td>{{com.dateAt | date:"dd/m/y"}}</td>
+                <td>{{com.etat}}</td>
                 <td>{{com.zone.nom}}</td>
-                <td>{{com.montant}}</td>
-            </tr>
-            
+                <td>{{com.montant}} Frs</td>
+                <td class="d-flex">
+                    <button class="btn btn-outline-dark d-flex" type="button" routerLink="">
+                        <i class="fas fa-trash fa-lg mt-2 text-danger"></i>
+                        <span class="m-1 mt-0 mb-0">Annuler</span> 
+                    </button>
+                    <button class="btn btn-outline-dark d-flex justify-content-between" type="button" routerLink="">
+                        <i class="fa-solid fa-lg fa-pen-to-square mt-2 text-info"></i>
+                        
+                        <span class="m-1 mt-0 mb-0">Modifier</span>
+                    </button>
+                </td>
+            </tr>            
         </tbody>
     </table>    
 </div>

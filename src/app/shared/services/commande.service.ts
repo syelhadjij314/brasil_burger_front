@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { Commande } from '../models/commande';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class CommandeService {
       )
     );
   }
-  setCommande(body: any):Observable<any> {
-    return this.http.post<any>(this.urlCommande,body)
+  postCommande(body: any):Observable<any> {
+    return this.http.post<Commande>(this.urlCommande,body)
   }
 
   getDecodedAccessToken(token: string): any {

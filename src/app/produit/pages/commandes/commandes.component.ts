@@ -14,21 +14,32 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class CommandesComponent implements OnInit {
   @Input() mesCommandes!:any;
   searchText:string="";
-  responseData:any;
+  user: User= {}
   loginToken = localStorage.getItem('token') || '';
+  idUserConnected = localStorage.getItem('id') || '';
+  tokenDecode:any;
   constructor(private commandServ : CommandeService,
     private userServ:UserService,
     private authServ:AuthService,
     private route:Router
     ) { }
-  user: User= {}
 
   ngOnInit(): void {
+    // console.log(this.idUserConnected)   
+    this.tokenDecode = this.commandServ.getDecodedAccessToken(this.loginToken)
+    if (this.tokenDecode.roles[1]=='ROLE_CLIENT') {        
+      this.userServ.getCommandesClient(this.idUserConnected).subscribe(commands =>{
+        this.mesCommandes=commands
+      })    
+    }else{
+      this.commandServ.getCommande().subscribe(commands =>{        
+        this.mesCommandes=commands
+      }) 
+    }
+
+      
+      
     
-    let tokenDecode = this.commandServ.getDecodedAccessToken(this.loginToken)
-    this.userServ.getCommandesClient(2).subscribe(commands =>{ 
-      this.mesCommandes=commands
-    })    
   }
       
     

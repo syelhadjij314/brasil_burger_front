@@ -14,6 +14,7 @@ import { ComplementComponent } from './components/complement/complement.componen
 import { InputComponent } from './components/input/input.component';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BrasilBurgerComponent } from './pages/brasil-burger/brasil-burger.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CommandesComponent,
     ComplementComponent,
     InputComponent,
+    BrasilBurgerComponent,
   ],
   imports: [
     CommonModule,
