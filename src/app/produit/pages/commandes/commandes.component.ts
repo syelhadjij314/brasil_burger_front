@@ -18,14 +18,14 @@ export class CommandesComponent implements OnInit {
   loginToken = localStorage.getItem('token') || '';
   idUserConnected = localStorage.getItem('id') || '';
   tokenDecode:any;
-  constructor(private commandServ : CommandeService,
+  constructor(
+    private commandServ : CommandeService,
     private userServ:UserService,
     private authServ:AuthService,
     private route:Router
     ) { }
 
   ngOnInit(): void {
-    // console.log(this.idUserConnected)   
     this.tokenDecode = this.commandServ.getDecodedAccessToken(this.loginToken)
     if (this.tokenDecode.roles[1]=='ROLE_CLIENT') {        
       this.userServ.getCommandesClient(this.idUserConnected).subscribe(commands =>{
@@ -34,13 +34,12 @@ export class CommandesComponent implements OnInit {
     }else{
       this.commandServ.getCommande().subscribe(commands =>{        
         this.mesCommandes=commands
+        console.log(this.mesCommandes);
       }) 
-    }
-
-      
-      
-    
+    }        
   }
-      
+  annullerCommande(id:number){  
+    this.commandServ.updateCommande(id,{etat:"annuler"})  
+  }    
     
 }

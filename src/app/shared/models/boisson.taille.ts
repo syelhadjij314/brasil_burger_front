@@ -1,10 +1,10 @@
 export interface BoissonTaille{
-    "id":number
-    "quantiteStock": number,
-    "boisson": {
+    "id"?:number
+    "quantiteStock"?: number,
+    "boisson"?: {
         id: number
     },
-    "taille": {
+    "taille"?: {
         id: number
     },
     "commandeBoissonTailles"?: [

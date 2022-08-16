@@ -20,18 +20,17 @@
             <ng-container *ngIf="tokenDecode.roles[1]=='ROLE_CLIENT'">
                 <tr *ngFor="let com of mesCommandes.commandes | filter:searchText">
                     <td scope="row">{{com.numeroCommande}}</td>
-                    <td>{{com.dateAt | date:"dd/m/y"}}</td>
+                    <td>{{com.dateAt | date:"dd-mm-y"}}</td>
                     <td>{{com.etat}}</td>
                     <td>{{com.zone.nom}}</td>
                     <td>{{com.montant}}Frs</td>
                     <td class="d-flex">
-                        <button class="btn btn-outline-dark d-flex" type="button" routerLink="">
+                        <button class="btn btn-outline-dark d-flex" type="button" href="#" (click)="annullerCommande(com.id)">
                             <i class="fas fa-trash fa-lg mt-2 text-danger"></i>
                             <span class="m-1 mt-0 mb-0">Annuler</span> 
                         </button>
-                        <button class="btn btn-outline-dark d-flex justify-content-between" type="button" routerLink="">
-                            <i class="fa-solid fa-lg fa-pen-to-square mt-2 text-info"></i>
-                            
+                        <button class="btn btn-outline-dark d-flex justify-content-between" type="button" href="#">
+                            <i class="fa-solid fa-lg fa-pen-to-square mt-2 text-info"></i>                           
                             <span class="m-1 mt-0 mb-0">Modifier</span>
                         </button>
                     </td>
@@ -39,12 +38,12 @@
             </ng-container>
             <tr *ngFor="let com of mesCommandes | filter:searchText">
                 <td scope="row">{{com.numeroCommande}}</td>
-                <td>{{com.dateAt | date:"dd/m/y"}}</td>
+                <td>{{com.dateAt | date:"dd-mm-y"}}</td>
                 <td>{{com.etat}}</td>
                 <td>{{com.zone.nom}}</td>
                 <td>{{com.montant}} Frs</td>
                 <td class="d-flex">
-                    <button class="btn btn-outline-dark d-flex" type="button" routerLink="">
+                    <button class="btn btn-outline-dark d-flex" href="#" (click)="annullerCommande(com.id)">
                         <i class="fas fa-trash fa-lg mt-2 text-danger"></i>
                         <span class="m-1 mt-0 mb-0">Annuler</span> 
                     </button>

@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Commande } from 'src/app/shared/models/commande';
@@ -16,13 +17,18 @@ export class PanierComponent implements OnInit {
   // produit! : Produit|undefined|null;
   @Input('produits') prod!:Produit|null|undefined;
   @Input() mesZones!: Zone| null|undefined ;
+
+
   option!:string;
   zone$:any []=[];
   showZone:string ="d-none";
+  produits:LigneCommande[]=[]
   prixCommande:number=this.calculatePriceTotalCommande();
   constructor(private panierServ : PanierService
     , private zoneServ: ZoneService,
-    private commandeServ: CommandeService) { }
+    private commandeServ: CommandeService) { 
+      
+    }
 
   object$ = this.panierServ.object$
   ngOnInit(): void {
@@ -47,9 +53,9 @@ export class PanierComponent implements OnInit {
   calculatePriceTotalCommande(){
     return this.prixCommande=this.panierServ.calculatePriceCommande()
   }
-  CommandeOperation(){
+  CommandeOperation():LigneCommande[]{
     let produits=this.panierServ.getPanier();
-    const commandes: LigneCommande[]=[];
+    let commandes: LigneCommande[]=[];
     produits.forEach((produit:Produit)=>{
       if (produit['@type']=="Menu") {
         commandes.push({
@@ -63,42 +69,56 @@ export class PanierComponent implements OnInit {
           ],
         })
       }
-      else{
-        burgers:[
-          {
-            "quantite": produit.qnt,
-            "burger": {
-                "id":produit.id
+      if (produit['@type']=="Burger") {
+        commandes.push({
+          burgers:[
+            {
+                "quantite": produit.qnt,
+                "burger": {
+                    "id":produit.id,
+                }
             }
-          }
-        ]
+          ],
+        })
       }
-      commandes.push({
-        boissons:[
-          {
-            "quantite": produit.qnt,
-            "boissonTaille": {
-              id: produit.id                  
+      if (produit['@type']=="BoissonTaille"){
+
+        commandes.push({
+          boissons:[
+            {
+              "quantite": produit.qnt,
+              "boissonTaille": {
+                id: produit.id,                 
+              }
             }
-          }
-        ],
-        frites:[
-          {
-            "quantite": produit.qnt,
-            "frite": {
-              "id":produit.id
+          ],   
+        })
+      }
+      if (produit['@type']=="Frite"){
+        commandes.push({
+          frites:[
+            {
+              "quantite": produit.qnt,
+              "frite": {
+                id: produit.id,                
+              }
             }
-          }
-        ],
-      })
-      console.log(produit);    
+          ],   
+        })
+      }
+      // console.log(produit);    
     })
     return commandes;
   }
   sendCommande(){
     alert("OK")
+    this.produits = this.CommandeOperation()
     let body:Commande ={
-      produits: this.CommandeOperation(),
+      menus:this.produits[0].menus,
+      burgers:this.produits[1].burgers,
+      boissons:this.produits[2].boissons,
+      frites:this.produits[3].frites,
+
       zone:{
         id:3
       },
@@ -106,7 +126,7 @@ export class PanierComponent implements OnInit {
         id:2
       }
     }
-    console.log(body);    
+    console.log(this.produits);    
     this.commandeServ.postCommande(body);
     
   }    

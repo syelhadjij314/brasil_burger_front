@@ -5,12 +5,53 @@ export interface Produit {
     id:number,
     nom:string,
     prix:number,
-    image?:Blob,
+    image:Blob,
     ["@type"]: Menu | Boisson,
-    boissons:[]
-    burgers:[],
+    boissons?:[]
+    burgers?:[],
     frites?:[],
-    qnt:number,
-    produits:[],
+    qnt?:number,
+    produits?:[],
+}
+export interface Ipanier{
+    
+        "zone": {
+         id:number
+        },
+        "boissons": [
+          {
+            "quantite": 5,
+            "boissonTaille": {
+              "id":1
+            }
+          }
+        ],
+        "burgers": [
+          {
+            "quantite": 2,
+            "burger": {
+              "id":2
+              
+            }
+          }
+        ],
+        "frites": [
+          {
+            "quantite": 4,
+            "frite": {
+              "id":3
+              
+            }
+          }
+        ],
+        "menus": [
+          {
+            "quantite": 3,
+            "menu": {
+              "id":25
+              }
+          }
+        ]
+      
 }
 

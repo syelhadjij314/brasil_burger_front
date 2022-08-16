@@ -2,7 +2,7 @@ export interface LigneCommande
 {
     boissons?:[
         {
-            "quantite": number
+            "quantite"?: number
             "boissonTaille": {
                 "id":number
             }
@@ -10,7 +10,7 @@ export interface LigneCommande
     ],
     burgers?:[
         {
-            "quantite": number
+            "quantite"?: number
             "burger": {
                 "id":number
             }
@@ -18,7 +18,7 @@ export interface LigneCommande
     ],
     frites?:[
         {
-            "quantite": number
+            "quantite"?: number
             "frite": {
                 "id":number
             }
@@ -26,7 +26,7 @@ export interface LigneCommande
     ],
     menus?:[
         {
-            "quantite": number
+            "quantite"?: number
             "menu": {
                 "id":number
             }

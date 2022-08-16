@@ -26,9 +26,7 @@ export class SecuriteComponent implements OnInit {
       if (res['token']) {        
         localStorage.setItem('id',res['id'])
         localStorage.setItem('token',res['token']);
-        this.commandServ.getDecodedAccessToken(res['token']);
-        console.log(this.commandServ.getDecodedAccessToken(res['token']));
-        
+        this.commandServ.getDecodedAccessToken(res['token']);        
         this.route.navigateByUrl('/produit/commandes');        
       }
       else {
