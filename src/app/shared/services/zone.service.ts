@@ -10,6 +10,7 @@ export class ZoneService {
   constructor( private http:HttpClient) { }
  
   urlZone="http://localhost:8000/api/zones";
+  private urlLivreur = 'http://localhost:8000/api/livreurs';
 
   getZone():Observable<any>{
     return this.http.get<any>(this.urlZone).pipe(
@@ -18,4 +19,10 @@ export class ZoneService {
       )
     )
   }
+  getLivreur() {
+    return this.http.get<any>(this.urlLivreur).pipe(
+      map(
+        data => data['hydra:member']
+      ));
+    }
 }

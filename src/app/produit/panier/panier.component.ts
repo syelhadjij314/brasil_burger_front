@@ -26,8 +26,7 @@ export class PanierComponent implements OnInit {
   prixCommande:number=this.calculatePriceTotalCommande();
   constructor(private panierServ : PanierService
     , private zoneServ: ZoneService,
-    private commandeServ: CommandeService) { 
-      
+    private commandeServ: CommandeService) {       
     }
 
   object$ = this.panierServ.object$
@@ -44,7 +43,6 @@ export class PanierComponent implements OnInit {
   }
 
   showZones(){
-    alert("zs")
     this.showZone="d-block"
   }
   calculatePrice(produit:Produit,qnt:any){
@@ -111,7 +109,7 @@ export class PanierComponent implements OnInit {
     return commandes;
   }
   sendCommande(){
-    alert("OK")
+    // alert("OK")
     this.produits = this.CommandeOperation()
     let body:Commande ={
       menus:this.produits[0].menus,
@@ -126,7 +124,7 @@ export class PanierComponent implements OnInit {
         id:2
       }
     }
-    console.log(this.produits);    
+    // console.log(this.produits);    
     this.commandeServ.postCommande(body);
     
   }    

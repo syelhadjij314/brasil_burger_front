@@ -5,11 +5,11 @@ import { Zone } from "./Zone";
 export interface Commande {
     id?:number;
     isEtat?:string;
-    zone:{
-        id:number,
-    },
+    zone:Zone,
     client?:{
         id:number,
+        nom?:string,
+        prenom?:string
     },
     boissons?:[
         {
@@ -42,7 +42,11 @@ export interface Commande {
                 "id":number
             }
         }
-    ]
+    ],
+    numeroCommande?:string;
+    dateAt?:Date;
+    etat?:string;
+    montant?:number;
     // produits:LigneCommande[];
     ["hydra:member"]?:[{ }];
 }

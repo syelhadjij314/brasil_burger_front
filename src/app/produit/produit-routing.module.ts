@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { BrasilBurgerComponent } from './pages/brasil-burger/brasil-burger.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
-import { CommandesComponent } from './pages/commandes/commandes.component';
+import { CommandesComponent } from '../commandes/commandes.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PanierComponent } from './panier/panier.component';

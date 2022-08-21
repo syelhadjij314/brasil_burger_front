@@ -12,6 +12,7 @@ export class CommandeService {
   private urlCommande= "http://localhost:8000/api/commandes";
   tabCommande : Array<any> =[]
   headers:HttpHeaders;
+  dateTime:Date= new Date();
   constructor(private http : HttpClient){
     const token = localStorage.getItem('token');
     this.headers=new HttpHeaders().set('Authorization', 'Bearer ' + token); 
@@ -38,5 +39,13 @@ export class CommandeService {
     } catch(Error) {
       return null;
     }
+  }
+  dateFiltre(){
+    let date=new Date();
+    let day =date.toLocaleDateString().slice(0,2);
+    let month = date.toLocaleDateString().slice(3,5);
+    let year= date.toLocaleDateString().slice(6);
+    return year+"-"+month+"-"+day ;
+    //2022-08-10
   }
 }

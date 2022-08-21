@@ -1,28 +1,45 @@
-<!DOCTYPE html>
 <blog-header></blog-header>
 <div class="container">
-    <div class="search-name">
-        <input type="text" class="form-control mt-3" name="search" [(ngModel)]="searchText" autocomplete="on" aria-label="Text input with segmented">
+    <h2 class="text-center mt-2" *ngIf="tokenDecode.roles=='ROLE_GESTIONNAIRE'">LISTES DES COMMANDES DU</h2>
+    <div class="search-name mt-3 w-50" *ngIf="tokenDecode.roles=='ROLE_GESTIONNAIRE'">
+        <select  class="form-control" [(ngModel)]="zoneSearch">
+            <option *ngFor="let zone of mesZones" value="{{ zone.nom}}" >{{ zone.nom}}</option>            
+        </select>
     </div>
-    <h2 class="text-center mt-2">LISTES DES COMMANDES</h2>
+    <div class="search-name mt-3 w-50" *ngIf="tokenDecode.roles=='ROLE_GESTIONNAIRE'">
+        <select  class="form-control" [(ngModel)]="etatSearch">
+            <option value="Valider" >Valider</option>
+            <option value="Annuler" >Annuler</option>            
+            <option value="Disponible" >Disponible</option>            
+            <option value="Valider" >Valider</option>            
+        </select>
+    </div>
+    <div class="search-name">
+        <input type="date" class="form-control mt-3 w-25"  name="" [(ngModel)]="searchText">
+    </div>
+    <div class="search-name">
+        <input type="text" class="form-control mt-3" [(ngModel)]="searchText" autocomplete="on" aria-label="Text input with segmented">
+    </div>
     <table class="table mt-3">
-        <thead>
+        <thead class="bg-warning">
             <tr>
                 <th>Numero Commande</th>
                 <th>Date Commande</th>
                 <th>Etat</th>
                 <th>Zone</th>
+                <th>Client</th>
                 <th>Montant</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <ng-container *ngIf="tokenDecode.roles[1]=='ROLE_CLIENT'">
-                <tr *ngFor="let com of mesCommandes.commandes | filter:searchText">
+                <tr *ngFor="let com of mesCommandes.commandes|filter:searchText ">
                     <td scope="row">{{com.numeroCommande}}</td>
-                    <td>{{com.dateAt | date:"dd-mm-y"}}</td>
+                    <td>{{com.dateAt | date:'dd-MM-yyyy'}}</td>
                     <td>{{com.etat}}</td>
                     <td>{{com.zone.nom}}</td>
+                    <td>{{com.client.nom}}</td>
                     <td>{{com.montant}}Frs</td>
                     <td class="d-flex">
                         <button class="btn btn-outline-dark d-flex" type="button" href="#" (click)="annullerCommande(com.id)">
@@ -33,14 +50,19 @@
                             <i class="fa-solid fa-lg fa-pen-to-square mt-2 text-info"></i>                           
                             <span class="m-1 mt-0 mb-0">Modifier</span>
                         </button>
+                        <button class="btn btn-outline-dark d-flex" type="button" href="#" (click)="validerCommande(com.id)">
+                            <i class="fa-solid fa-check-double"></i> 
+                            <span class="m-1 mt-0 mb-0">Valider</span> 
+                        </button>
                     </td>
                 </tr>
             </ng-container>
-            <tr *ngFor="let com of mesCommandes | filter:searchText">
+            <tr *ngFor="let com of mesCommandes |FilterCommandePipe:zoneSearch |FilterCommandeEtatPipe:etatSearch">
                 <td scope="row">{{com.numeroCommande}}</td>
-                <td>{{com.dateAt | date:"dd-mm-y"}}</td>
+                <td>{{com.dateAt}}</td>
                 <td>{{com.etat}}</td>
                 <td>{{com.zone.nom}}</td>
+                <td>{{com.client?.prenom +" "+ com.client?.nom}}</td>
                 <td>{{com.montant}} Frs</td>
                 <td class="d-flex">
                     <button class="btn btn-outline-dark d-flex" href="#" (click)="annullerCommande(com.id)">
@@ -51,6 +73,10 @@
                         <i class="fa-solid fa-lg fa-pen-to-square mt-2 text-info"></i>
                         
                         <span class="m-1 mt-0 mb-0">Modifier</span>
+                    </button>
+                    <button class="btn btn-outline-dark d-flex" type="button" href="#" (click)="validerCommande(com.id)">
+                        <i class="fa-solid fa-check-double mt-1 text-success"></i>
+                        <span class="m-1 mt-0 mb-0">Valider</span> 
                     </button>
                 </td>
             </tr>            

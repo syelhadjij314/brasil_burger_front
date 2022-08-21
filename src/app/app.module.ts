@@ -7,19 +7,29 @@ import { BlogComponent } from './produit/produit.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FilterCommandeEtatPipe, FilterCommandePipe } from './shared/pipe/filter.commande.pipe';
+import { CommandesComponent } from './commandes/commandes.component';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     AppComponent,
     BlogComponent,
     NotFoundComponent,
+    CommandesComponent,
+    FilterCommandePipe,
+    FilterCommandeEtatPipe,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    Ng2SearchPipeModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

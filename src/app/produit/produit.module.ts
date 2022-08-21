@@ -9,12 +9,11 @@ import { CardComponent } from './components/card/card.component';
 import { LayoutModule } from '../layout/layout.module';
 import { RouterModule } from '@angular/router';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
-import { CommandesComponent } from './pages/commandes/commandes.component';
 import { ComplementComponent } from './components/complement/complement.component';
 import { InputComponent } from './components/input/input.component';
 import { FormsModule } from '@angular/forms';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BrasilBurgerComponent } from './pages/brasil-burger/brasil-burger.component';
+
 
 
 @NgModule({
@@ -24,7 +23,6 @@ import { BrasilBurgerComponent } from './pages/brasil-burger/brasil-burger.compo
     AsideComponent,
     CardComponent,
     CatalogueComponent,
-    CommandesComponent,
     ComplementComponent,
     InputComponent,
     BrasilBurgerComponent,
@@ -35,7 +33,6 @@ import { BrasilBurgerComponent } from './pages/brasil-burger/brasil-burger.compo
     LayoutModule,
     RouterModule,
     FormsModule,
-    Ng2SearchPipeModule 
   ],
 })
 export class ProduitModule { }

@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 export class UserService {
 
   private urlUser = 'http://localhost:8000/api/users';
+
   // private urlUserCommandes = 'http://localhost:8000/api/users'
   usercom:User={}
   headers: HttpHeaders;
@@ -45,4 +46,5 @@ export class UserService {
         return this.usercom.id;
       
     }
+  
 }

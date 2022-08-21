@@ -1,0 +1,62 @@
+<blog-header></blog-header>
+<div class="container">
+    <div class="d-flex justify-content-end mt-3">
+        <button type="button" class="btn btn-primary">
+            <a class="nav-link" routerLink="/admin/livraisons">LISTE LIVRAISONS</a>
+        </button>
+    </div>
+    <hr>
+    <div class="mt-3 d-flex justify-content-center">    
+        <select  class="form-control w-50 text-center" [(ngModel)]="zoneSearch">
+            <option value="" selected disabled hidden>
+                --------- Choisissez un zone de livraison --------
+            </option>
+            <ng-container *ngFor="let zone of zones">
+                <option *ngIf="zone.commandes.length > 0" value="{{ zone.nom}}" >
+                    {{ zone.nom}}
+                </option>            
+            </ng-container>                    
+        </select>
+    </div>
+        <h1 class="text-center bg-warning mt-3"></h1>
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Numero Commande</th>
+                    <th>Date Commande</th>
+                    <th>Etat</th>
+                    <th>Client</th>
+                    <th>Montant</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>                    
+                <ng-container >
+                <tr class="" *ngFor="let com of mesCommandes |filterLivraisonCommandePipe:zoneSearch">
+                    <ng-container *ngIf="com.etat==='valider'">
+                        <td scope="row">{{com.numeroCommande}}</td>
+                        <td>{{com.dateAt | date:'dd-MM-yyyy'}}</td>
+                        <td>{{com.etat}}</td>
+                        <td>{{com.client?.prenom  +" "+ com.client?.nom}}</td>
+                        <td>{{com.montant}}Frs</td>
+                        <td>
+                            <input #check type="checkbox" (click)="recupInputChecked(com,check)" value="">
+                        </td>
+                    </ng-container>
+                    </tr>                    
+                </ng-container>
+            </tbody>
+        </table>
+        <div class="mt-3 d-flex justify-content-center">        
+            <select class="form-control text-center w-50" #user (click)="recupLivreur(user)">                    
+                <ng-container >
+                    <option value="" selected disabled hidden>--------- Choisissez un Livreur disponible ---------</option>                    
+                    <option class="" *ngFor="let user of users" value="{{ user.id }}">
+                            {{ user.prenom +' '+ user.nom +' '+ user.telephone}}
+                    </option>                   
+                </ng-container>
+            </select>
+        </div>
+        <button type="button" class="btn btn-warning mt-3 mb-3 w-100" (click)="sendLivraison()">LIVRER LA COMMANDE</button>
+    </div>
+<blog-footer></blog-footer>
